@@ -2,6 +2,7 @@ include:
   - immich/docker-compose.yaml
   - homeassistant/docker-compose.yaml
   - homarr/docker-compose.yaml
+  - adguard/docker-compose.yaml
 services:
   mealie:
     image: ghcr.io/mealie-recipes/mealie:v2.7.1 # 
