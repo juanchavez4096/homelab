@@ -2,7 +2,7 @@ services:
   homeassistant:
     container_name: homeassistant
     image: "ghcr.io/home-assistant/home-assistant:stable"
-    network: host
+    network_mode: host
     volumes:
       - ./config:/config
       - /etc/localtime:/etc/localtime:ro
