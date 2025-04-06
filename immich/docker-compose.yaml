@@ -22,6 +22,8 @@ services:
       - /etc/localtime:/etc/localtime:ro
     env_file:
       - .env
+    ports:
+      - '2283:2283'
     depends_on:
       - tailscale
       - redis
@@ -29,7 +31,6 @@ services:
     restart: always
     healthcheck:
       disable: false
-    network_mode: service:tailscale
 
   immich-machine-learning:
     container_name: immich_machine_learning
