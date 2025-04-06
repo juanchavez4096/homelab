@@ -1,9 +1,10 @@
 include:
+  - tailscale/docker-compose.yaml
   - immich/docker-compose.yaml
   - homeassistant/docker-compose.yaml
   - homarr/docker-compose.yaml
   - adguard/docker-compose.yaml
-  - tailscale/docker-compose.yaml
+  
 
 services:
   mealie:
