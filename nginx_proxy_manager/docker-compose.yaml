@@ -5,7 +5,7 @@ services:
     restart: unless-stopped
     #network_mode: "host"
     ports:
-      #- "80:80"    # HTTP
+      - "80:80"    # HTTP
       - "443:443"  # HTTPS
       - "81:81"    # Admin Panel
     volumes:
