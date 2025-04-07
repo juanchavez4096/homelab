@@ -12,6 +12,7 @@ services:
     - TS_USERSPACE=false
     - TS_ACCEPT_DNS=false
     - TS_ROUTES=192.168.0.0/24
+    - TS_SERVE_CONFIG=./config/homeassistant.json
     volumes: 
       - ./tailscale:/var/lib/tailscale # State data will be stored in this directory 
       - /dev/net/tun:/dev/net/tun # Required for tailscale to work 
