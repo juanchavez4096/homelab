@@ -1,5 +1,6 @@
 include:
   - portainer/docker-compose.yaml
+  - nginx_proxy_manager/docker-compose.yaml
   - tailscale/docker-compose.yaml
   - immich/docker-compose.yaml
   - homeassistant/docker-compose.yaml
