@@ -4,6 +4,8 @@ services:
     ports:
       - 53:53/tcp # plain dns over tcp
       - 53:53/udp # plain dns over udp
+      - 853:853/tcp # TLS dns over tcp
+      - 853:853/udp # TLS dns over udp
       - 8081:80/tcp # http web interface
       - 3000:3000/tcp # initial setup web interface
     volumes:
