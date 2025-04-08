@@ -8,7 +8,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /run/dbus:/run/dbus:ro
     restart: unless-stopped
-    ports:
-        - "8123:8123" # 
+    networks:
+      - proxy-network
     privileged: true
     
