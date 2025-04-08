@@ -6,11 +6,12 @@ services:
       - 53:53/udp # plain dns over udp
       - 853:853/tcp # TLS dns over tcp
       - 853:853/udp # TLS dns over udp
-      - 8081:80/tcp # http web interface
       - 3001:3001/tcp # initial setup web interface
     volumes:
       - config:/opt/adguardhome/conf # app configuration
       - work:/opt/adguardhome/work # app working directory
+    networks:
+      - proxy-network
 
 volumes:
   config:
