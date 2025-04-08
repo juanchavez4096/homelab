@@ -8,5 +8,5 @@ services:
       - ./appdata:/appdata
     environment:
       - SECRET_ENCRYPTION_KEY=fdb53376862b0864cb4196b2a7b7af5a0cd672fe7381f47c8ecd9821ee0a04a2
-    ports:
-      - '7575:7575'
+    networks:
+      - proxy-network
