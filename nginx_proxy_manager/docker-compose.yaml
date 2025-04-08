@@ -4,7 +4,7 @@ services:
     container_name: nginx_proxy_manager
     restart: unless-stopped
     networks:
-      - services-network
+      - proxy-network
     ports:
       - "80:80"    # HTTP
       - "443:443"  # HTTPS
