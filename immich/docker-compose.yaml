@@ -55,6 +55,8 @@ services:
     healthcheck:
       test: redis-cli ping || exit 1
     restart: always
+    networks:
+      - proxy-network
 
   database:
     container_name: immich_postgres
