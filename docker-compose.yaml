@@ -1,3 +1,6 @@
+network:
+  services-network:
+
 include:
   - portainer/docker-compose.yaml
   - nginx_proxy_manager/docker-compose.yaml
@@ -13,8 +16,8 @@ services:
     image: ghcr.io/mealie-recipes/mealie:v2.7.1 # 
     container_name: mealie
     restart: always
-    ports:
-        - "9925:9000" # 
+    networks:
+      - services-network
     deploy:
       resources:
         limits:
@@ -31,3 +34,5 @@ services:
 
 volumes:
   mealie-data:
+
+
