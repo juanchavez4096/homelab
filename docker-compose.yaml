@@ -16,7 +16,7 @@ services:
     container_name: mealie
     restart: always
     networks:
-      - services-network
+      - proxy-network
     deploy:
       resources:
         limits:
@@ -35,6 +35,7 @@ volumes:
   mealie-data:
 
 networks:
-  services-network:
+  proxy-network:
+    external: true
 
 
