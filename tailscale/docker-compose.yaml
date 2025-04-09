@@ -3,6 +3,7 @@ services:
     container_name: tailscale 
     hostname: tailscale-nas 
     image: tailscale/tailscale:stable
+    network_mode: "service:nginx_proxy_manager"
     env_file:
     - .env
     environment:
@@ -11,7 +12,7 @@ services:
     - TS_STATE_DIR=/var/lib/tailscale
     - TS_USERSPACE=false
     #- TS_ACCEPT_DNS=false
-    - TS_ROUTES=192.168.0.0/24
+    #- TS_ROUTES=192.168.0.0/24
     #- TS_SERVE_CONFIG=./config/homeassistant.json
     volumes: 
       - ./tailscale:/var/lib/tailscale # State data will be stored in this directory 
