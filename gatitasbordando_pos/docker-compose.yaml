@@ -2,8 +2,8 @@ services:
   app:
     container_name: gatitasbordando-pos
     build:
-      context: ../gatitasbordando-pos
-      dockerfile: ../gatitasbordando-pos/Dockerfile
+      context: ../../gatitasbordando-pos
+      dockerfile: ../../gatitasbordando-pos/Dockerfile
     networks:
       - proxy-network
     env_file:
