@@ -1,4 +1,0 @@
-{"logtail":{"client_time":"2025-04-19T20:18:34.344065566Z","proc_id":3914999269,"proc_seq":95},"metrics":"N18profiles_newS0202N24profiles_migrationS0402N34profiles_migration_successS0602N46gauge_dns_manager_linux_mode_directS0802","text":"tailscaled got signal terminated; shutting down\n"}
-{"logtail":{"client_time":"2025-04-19T20:18:34.34450092Z","proc_id":3914999269,"proc_seq":96},"text":"control: client.Shutdown ...\n"}
-{"logtail":{"client_time":"2025-04-19T20:18:34.344712519Z","proc_id":3914999269,"proc_seq":97},"text":"auditlog: stopped for profileID: \n"}
-{"logtail":{"client_time":"2025-04-19T20:18:34.344939716Z","proc_id":3914999269,"proc_seq":98},"v":1,"text":"control: mapRoutine: context done.\n"}
