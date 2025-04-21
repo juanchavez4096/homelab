@@ -8,7 +8,8 @@ include:
   - homeassistant/docker-compose.yaml
   - homarr/docker-compose.yaml
   - adguard/docker-compose.yaml
-  - ../gatitasbordando-pos/docker-compose.yaml
+  - wordpress/docker-compose.yaml
+  #- ../gatitasbordando-pos/docker-compose.yaml
   
 
 services:
