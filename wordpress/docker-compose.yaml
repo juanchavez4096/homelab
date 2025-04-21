@@ -16,13 +16,12 @@ services:
     image: wordpress:latest
     volumes:
       - wp_data:/var/www/html
-    ports:
-      - 8183:80
     restart: always
     env_file:
       - .env
     networks:
       - wordpress-network
+      - proxy-network
     depends_on:
       - db
 volumes:
