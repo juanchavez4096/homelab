@@ -25,7 +25,7 @@ services:
       - wordpress-network
       - proxy-network
     depends_on:
-      - db
+      - mariadb-wp
 volumes:
   db_data:
   wp_data:
