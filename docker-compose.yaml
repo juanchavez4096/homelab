@@ -9,6 +9,7 @@ include:
   - homarr/docker-compose.yaml
   - adguard/docker-compose.yaml
   - wordpress/docker-compose.yaml
+  - terraria/docker-compose.yaml
   - ../gatitasbordando-pos/docker-compose.yaml
   
 
