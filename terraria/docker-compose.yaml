@@ -10,5 +10,5 @@ services:
     ports:
       - 7777:7777
     volumes:
-      - /home/juan/terraria/world:/root/.local/share/Terraria/Worlds
+      - ./world:/root/.local/share/Terraria/Worlds
     restart: unless-stopped
