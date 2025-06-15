@@ -11,4 +11,5 @@ services:
       - 7777:7777
     volumes:
       - ./world:/root/.local/share/Terraria/Worlds
+      - ./ServerPlugins:/plugins
     restart: unless-stopped
