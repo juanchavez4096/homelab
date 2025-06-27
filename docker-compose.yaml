@@ -10,6 +10,7 @@ include:
   - adguard/docker-compose.yaml
   - wordpress/docker-compose.yaml
   - terraria/docker-compose.yaml
+  - vaultwarden/docker-compose.yaml
   - ../gatitasbordando-pos/docker-compose.yaml
   
 
