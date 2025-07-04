@@ -9,8 +9,6 @@ services:
     volumes:
       - ./config:/config
       - /data:/data
-    devices:
-      - /dev/dri:/dev/dri #Use for Intel QuickSync
     ports:
       - 8096:8096
       - 7359:7359/udp #Service Discovery
