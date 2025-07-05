@@ -53,8 +53,9 @@ services:
         - /data/downloads:/downloads
     ports:
         - "8888:8888" # qbittorrent
-        
     restart: always
+    env_file:
+      - ./.env
 
   # See the 'qBittorrent Stalls with VPN Timeout' section for more information.
   # deunhealth:
