@@ -44,7 +44,7 @@ services:
         - REGION=${REGION}
         - USER=${USER}
         - PASSWORD=${PASSWORD}
-        - PORT_FORWARDING=true
+        # - PORT_FORWARDING=true
         # - UID=${PUID}
         # - GID=${PGID}
         # - TZ=${TZ}
