@@ -59,17 +59,18 @@ services:
         - UID=${PUID}
         - GID=${PGID}
         - TZ=${TZ}
+        - ALLOW_LOCAL_SUBNET_TRAFFIC=true
     volumes:
         - ./config:/config
         - /data/downloads:/downloads
     ports:
         - "8888:8888" # qbittorrent
-        #- "9696:9696" # prowlarr
-        #- "6789:6789" # nzbget
-        #- "7878:7878" # radarr
-        #- "8989:8989" # sonarr
-        #- "8686:8686" # lidarr
-        #- "6767:6767" # bazarr
+        - "9696:9696" # prowlarr
+        - "6789:6789" # nzbget
+        - "7878:7878" # radarr
+        - "8989:8989" # sonarr
+        - "8686:8686" # lidarr
+        - "6767:6767" # bazarr
     restart: unless-stopped
 
   # See the 'qBittorrent Stalls with VPN Timeout' section for more information.
@@ -85,109 +86,109 @@ services:
   #   volumes:
   #     - /var/run/docker.sock:/var/run/docker.sock
 
-  # nzbget:
-  #   image: lscr.io/linuxserver/nzbget:latest
-  #   container_name: nzbget
-  #   environment:
-  #     - PUID=${PUID}
-  #     - PGID=${PGID}
-  #     - TZ=${TZ}
-  #   volumes:
-  #     - /etc/localtime:/etc/localtime:ro
-  #     - ./nzbget:/config
-  #     - /data:/data
-  #   network_mode: service:pia-qbittorrent
-  #   depends_on:
-  #     pia-qbittorrent:
-  #       condition: service_healthy
-  #       restart: true
-  #   restart: unless-stopped
+  nzbget:
+    image: lscr.io/linuxserver/nzbget:latest
+    container_name: nzbget
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./nzbget:/config
+      - /data:/data
+    network_mode: service:pia-qbittorrent
+    depends_on:
+      pia-qbittorrent:
+        condition: service_healthy
+        restart: true
+    restart: unless-stopped
     
 
-  # prowlarr:
-  #   image: lscr.io/linuxserver/prowlarr:latest
-  #   container_name: prowlarr
-  #   environment:
-  #     - PUID=${PUID}
-  #     - PGID=${PGID}
-  #     - TZ=${TZ}
-  #   volumes:
-  #     - /etc/localtime:/etc/localtime:ro
-  #     - ./prowlarr:/config
-  #   restart: unless-stopped
-  #   depends_on:
-  #     pia-qbittorrent:
-  #       condition: service_healthy
-  #       restart: true
-  #   network_mode: service:pia-qbittorrent
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./prowlarr:/config
+    restart: unless-stopped
+    depends_on:
+      pia-qbittorrent:
+        condition: service_healthy
+        restart: true
+    network_mode: service:pia-qbittorrent
 
-  # sonarr:
-  #   image: lscr.io/linuxserver/sonarr:latest
-  #   container_name: sonarr
-  #   restart: unless-stopped
-  #   environment:
-  #     - PUID=${PUID}
-  #     - PGID=${PGID}
-  #     - TZ=${TZ}
-  #   volumes:
-  #     - /etc/localtime:/etc/localtime:ro
-  #     - ./sonarr:/config
-  #     - /data:/data
-  #   depends_on:
-  #     pia-qbittorrent:
-  #       condition: service_healthy
-  #       restart: true
-  #   network_mode: service:pia-qbittorrent
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./sonarr:/config
+      - /data:/data
+    depends_on:
+      pia-qbittorrent:
+        condition: service_healthy
+        restart: true
+    network_mode: service:pia-qbittorrent
 
-  # radarr:
-  #   image: lscr.io/linuxserver/radarr:latest
-  #   container_name: radarr
-  #   restart: unless-stopped
-  #   environment:
-  #     - PUID=${PUID}
-  #     - PGID=${PGID}
-  #     - TZ=${TZ}
-  #   volumes:
-  #     - /etc/localtime:/etc/localtime:ro
-  #     - ./radarr:/config
-  #     - /data:/data
-  #   depends_on:
-  #     pia-qbittorrent:
-  #       condition: service_healthy
-  #       restart: true
-  #   network_mode: service:pia-qbittorrent
-  # lidarr:
-  #   container_name: lidarr
-  #   image: lscr.io/linuxserver/lidarr:latest
-  #   restart: unless-stopped
-  #   volumes:
-  #     - /etc/localtime:/etc/localtime:ro
-  #     - ./lidarr:/config
-  #     - /data:/data
-  #   environment:
-  #     - PUID=${PUID}
-  #     - PGID=${PGID}
-  #     - TZ=${TZ}
-  #   depends_on:
-  #     pia-qbittorrent:
-  #       condition: service_healthy
-  #       restart: true
-  #   network_mode: service:pia-qbittorrent
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./radarr:/config
+      - /data:/data
+    depends_on:
+      pia-qbittorrent:
+        condition: service_healthy
+        restart: true
+    network_mode: service:pia-qbittorrent
+  lidarr:
+    container_name: lidarr
+    image: lscr.io/linuxserver/lidarr:latest
+    restart: unless-stopped
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./lidarr:/config
+      - /data:/data
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    depends_on:
+      pia-qbittorrent:
+        condition: service_healthy
+        restart: true
+    network_mode: service:pia-qbittorrent
 
-  # bazarr:
-  #   image: lscr.io/linuxserver/bazarr:latest
-  #   container_name: bazarr
-  #   restart: unless-stopped
-  #   environment:
-  #     - PUID=${PUID}
-  #     - PGID=${PGID}
-  #     - TZ=${TZ}
-  #   volumes:
-  #     - /etc/localtime:/etc/localtime:ro
-  #     - ./bazarr:/config
-  #     - /data:/data
-  #   depends_on:
-  #     pia-qbittorrent:
-  #       condition: service_healthy
-  #       restart: true
-  #   network_mode: service:pia-qbittorrent
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./bazarr:/config
+      - /data:/data
+    depends_on:
+      pia-qbittorrent:
+        condition: service_healthy
+        restart: true
+    network_mode: service:pia-qbittorrent
