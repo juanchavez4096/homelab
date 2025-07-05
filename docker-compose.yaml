@@ -9,7 +9,7 @@ include:
   - homarr/docker-compose.yaml
   - adguard/docker-compose.yaml
   - wordpress/docker-compose.yaml
-  - terraria/docker-compose.yaml
+  #- terraria/docker-compose.yaml
   - vaultwarden/docker-compose.yaml
   - jellyfin/docker-compose.yaml
   - servarr/docker-compose.yaml
