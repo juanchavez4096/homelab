@@ -17,45 +17,45 @@
 #         - subnet: 172.39.0.0/24
 
 services:
-  # gluetun:
-  #   image: qmcgaw/gluetun
-  #   container_name: gluetun
-  #   cap_add:
-  #     - NET_ADMIN
-  #   devices:
-  #     - /dev/net/tun:/dev/net/tun
-  #   volumes:
-  #     - ./gluetun:/gluetun
-  #   environment:
-  #     - VPN_SERVICE_PROVIDER=private internet access
-  #     - OPENVPN_USER=${USER}
-  #     - OPENVPN_PASSWORD=${PASSWORD}
-  #     - SERVER_REGIONS=${REGION}
-  #   ports:
-  #     - "6789:6789" # nzbget
+  gluetun:
+    image: qmcgaw/gluetun
+    container_name: gluetun
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    volumes:
+      - ./gluetun:/gluetun
+    environment:
+      - VPN_SERVICE_PROVIDER=private internet access
+      - OPENVPN_USER=${USER}
+      - OPENVPN_PASSWORD=${PASSWORD}
+      - SERVER_REGIONS=${REGION}
+    # ports:
+    #   - "6789:6789" # nzbget
 
   
-  pia-qbittorrent:
-    image: j4ym0/pia-qbittorrent
-    container_name: pia-qbittorrent
-    cap_add:
-        - NET_ADMIN
-    environment:
-        - REGION=${REGION}
-        - USER=${USER}
-        - PASSWORD=${PASSWORD}
-        # - PORT_FORWARDING=true
-        # - UID=${PUID}
-        # - GID=${PGID}
-        # - TZ=${TZ}
-    volumes:
-        - ./config:/config
-        - /data/downloads:/downloads
-    ports:
-        - "8888:8888" # qbittorrent
-    restart: always
-    env_file:
-      - ./.env
+  # pia-qbittorrent:
+  #   image: j4ym0/pia-qbittorrent
+  #   container_name: pia-qbittorrent
+  #   cap_add:
+  #       - NET_ADMIN
+  #   environment:
+  #       - REGION=${REGION}
+  #       - USER=${USER}
+  #       - PASSWORD=${PASSWORD}
+  #       # - PORT_FORWARDING=true
+  #       # - UID=${PUID}
+  #       # - GID=${PGID}
+  #       # - TZ=${TZ}
+  #   volumes:
+  #       - ./config:/config
+  #       - /data/downloads:/downloads
+  #   ports:
+  #       - "8888:8888" # qbittorrent
+  #   restart: always
+  #   env_file:
+  #     - ./.env
 
   # See the 'qBittorrent Stalls with VPN Timeout' section for more information.
   # deunhealth:
