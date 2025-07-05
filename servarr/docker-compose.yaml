@@ -129,8 +129,6 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./sonarr:/config
       - /data:/data
-    ports:
-      - 8989:8989
     depends_on:
       pia-qbittorrent:
         condition: service_healthy
@@ -149,8 +147,6 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./radarr:/config
       - /data:/data
-    ports:
-      - 7878:7878
     depends_on:
       pia-qbittorrent:
         condition: service_healthy
@@ -168,8 +164,6 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
-    ports:
-      - 8686:8686
     depends_on:
       pia-qbittorrent:
         condition: service_healthy
@@ -188,8 +182,6 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./bazarr:/config
       - /data:/data
-    ports:
-      - 6767:6767
     depends_on:
       pia-qbittorrent:
         condition: service_healthy
