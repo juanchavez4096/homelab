@@ -17,33 +17,26 @@
 #         - subnet: 172.39.0.0/24
 
 services:
-  # airvpn recommended (referral url: https://airvpn.org/?referred_by=673908)
-  # gluetun:
-  #   image: qmcgaw/gluetun
-  #   container_name: gluetun
-  #   cap_add:
-  #     - NET_ADMIN
-  #   devices:
-  #     - /dev/net/tun:/dev/net/tun # If running on an LXC see readme for more info.
-  #   networks:
-  #     servarrnetwork:
-  #       ipv4_address: 172.39.0.2
-  #   ports:
-  #     - 8080:8080 # qbittorrent web interface
-  #     - 6881:6881 # qbittorrent torrent port
-  #     - 6789:6789 # nzbget
-  #     - 9696:9696 # prowlarr
-  #   volumes:
-  #     - ./gluetun:/gluetun
-  #   # Make a '.env' file in the same directory.
-  #   env_file:
-  #     - .env
-  #   healthcheck:
-  #     test: ping -c 1 www.google.com || exit 1
-  #     interval: 20s
-  #     timeout: 10s
-  #     retries: 5
-  #   restart: unless-stopped
+  gluetun:
+    image: qmcgaw/gluetun
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    volumes:
+      - ./gluetun:/gluetun
+    environment:
+      - VPN_SERVICE_PROVIDER=private internet access
+      - OPENVPN_USER=${USER}
+      - OPENVPN_PASSWORD=${PASSWORD}
+      - SERVER_REGIONS=${REGION}
+    ports:
+      - "9696:9696" # prowlarr
+      - "6789:6789" # nzbget
+      - "7878:7878" # radarr
+      - "8989:8989" # sonarr
+      - "8686:8686" # lidarr
+      - "6767:6767" # bazarr
 
   
   pia-qbittorrent:
@@ -65,12 +58,7 @@ services:
         - /data/downloads:/downloads
     ports:
         - "8888:8888" # qbittorrent
-        - "9696:9696" # prowlarr
-        - "6789:6789" # nzbget
-        - "7878:7878" # radarr
-        - "8989:8989" # sonarr
-        - "8686:8686" # lidarr
-        - "6767:6767" # bazarr
+        
     restart: always
 
   # See the 'qBittorrent Stalls with VPN Timeout' section for more information.
@@ -97,7 +85,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./nzbget:/config
       - /data:/data
-    network_mode: "service:pia-qbittorrent"
+    network_mode: "service:gluetun"
     depends_on:
       pia-qbittorrent:
         condition: service_healthy
@@ -120,7 +108,7 @@ services:
       pia-qbittorrent:
         condition: service_healthy
         restart: true
-    network_mode: "service:pia-qbittorrent"
+    network_mode: "service:gluetun"
 
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest
@@ -138,7 +126,7 @@ services:
       pia-qbittorrent:
         condition: service_healthy
         restart: true
-    network_mode: "service:pia-qbittorrent"
+    network_mode: "service:gluetun"
 
   radarr:
     image: lscr.io/linuxserver/radarr:latest
@@ -156,7 +144,7 @@ services:
       pia-qbittorrent:
         condition: service_healthy
         restart: true
-    network_mode: "service:pia-qbittorrent"
+    network_mode: "service:gluetun"
   lidarr:
     container_name: lidarr
     image: lscr.io/linuxserver/lidarr:latest
@@ -173,7 +161,7 @@ services:
       pia-qbittorrent:
         condition: service_healthy
         restart: true
-    network_mode: "service:pia-qbittorrent"
+    network_mode: "service:gluetun"
 
   bazarr:
     image: lscr.io/linuxserver/bazarr:latest
@@ -191,4 +179,4 @@ services:
       pia-qbittorrent:
         condition: service_healthy
         restart: true
-    network_mode: "service:pia-qbittorrent"
+    network_mode: "service:gluetun"
