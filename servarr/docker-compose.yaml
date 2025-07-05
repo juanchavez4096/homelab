@@ -35,26 +35,26 @@ services:
       - "6789:6789" # nzbget
 
   
-  pia-qbittorrent:
-    image: j4ym0/pia-qbittorrent
-    container_name: pia-qbittorrent
-    cap_add:
-        - NET_ADMIN
-    environment:
-        - REGION=${REGION}
-        - USER=${USER}
-        - PASSWORD=${PASSWORD}
-        - PORT_FORWARDING=true
-        - UID=${PUID}
-        - GID=${PGID}
-        - TZ=${TZ}
-    volumes:
-        - ./config:/config
-        - /data/downloads:/downloads
-    ports:
-        - "8888:8888" # qbittorrent
+  # pia-qbittorrent:
+  #   image: j4ym0/pia-qbittorrent
+  #   container_name: pia-qbittorrent
+  #   cap_add:
+  #       - NET_ADMIN
+  #   environment:
+  #       - REGION=${REGION}
+  #       - USER=${USER}
+  #       - PASSWORD=${PASSWORD}
+  #       - PORT_FORWARDING=true
+  #       - UID=${PUID}
+  #       - GID=${PGID}
+  #       - TZ=${TZ}
+  #   volumes:
+  #       - ./config:/config
+  #       - /data/downloads:/downloads
+  #   ports:
+  #       - "8888:8888" # qbittorrent
         
-    restart: always
+  #   restart: always
 
   # See the 'qBittorrent Stalls with VPN Timeout' section for more information.
   # deunhealth:
