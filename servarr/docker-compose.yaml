@@ -45,9 +45,9 @@ services:
         - USER=${USER}
         - PASSWORD=${PASSWORD}
         - PORT_FORWARDING=true
-        - UID=${PUID}
-        - GID=${PGID}
-        - TZ=${TZ}
+        # - UID=${PUID}
+        # - GID=${PGID}
+        # - TZ=${TZ}
     volumes:
         - ./config:/config
         - /data/downloads:/downloads
