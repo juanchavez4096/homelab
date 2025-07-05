@@ -12,6 +12,7 @@ include:
   - terraria/docker-compose.yaml
   - vaultwarden/docker-compose.yaml
   - jellyfin/docker-compose.yaml
+  - servarr/docker-compose.yaml
   - ../gatitasbordando-pos/docker-compose.yaml
   
 
