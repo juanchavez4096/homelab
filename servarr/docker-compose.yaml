@@ -71,7 +71,7 @@ services:
         - "8989:8989" # sonarr
         - "8686:8686" # lidarr
         - "6767:6767" # bazarr
-    restart: unless-stopped
+    restart: always
 
   # See the 'qBittorrent Stalls with VPN Timeout' section for more information.
   # deunhealth:
@@ -102,7 +102,7 @@ services:
       pia-qbittorrent:
         condition: service_healthy
         restart: true
-    restart: unless-stopped
+    restart: always
     
 
   prowlarr:
