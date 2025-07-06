@@ -9,12 +9,12 @@
 # https://github.com/TechHutTV/homelab/tree/main/media#docker-compose-and-env
 #############################################################################
 
-# networks:
-#   servarrnetwork:
-#     name: servarrnetwork
-#     ipam:
-#       config:
-#         - subnet: 172.39.0.0/24
+networks:
+  servarrnetwork:
+    name: servarrnetwork
+    ipam:
+      config:
+        - subnet: 172.39.0.0/24
 
 services:
   gluetun:
@@ -24,6 +24,9 @@ services:
       - NET_ADMIN
     devices:
       - /dev/net/tun:/dev/net/tun
+    networks:
+      servarrnetwork:
+        ipv4_address: 172.39.0.2
     volumes:
       - ./gluetun:/gluetun
     env_file:
