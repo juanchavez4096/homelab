@@ -150,6 +150,9 @@ services:
       - /data:/data
     ports:
       - 8989:8989
+    networks:
+      servarrnetwork:
+        ipv4_address: 172.39.0.3
 
   radarr:
     image: lscr.io/linuxserver/radarr:latest
@@ -165,6 +168,9 @@ services:
       - /data:/data
     ports:
       - 7878:7878
+    networks:
+      servarrnetwork:
+        ipv4_address: 172.39.0.4
 
   lidarr:
     container_name: lidarr
@@ -180,6 +186,9 @@ services:
       - TZ=${TZ}
     ports:
       - 8686:8686
+    networks:
+      servarrnetwork:
+        ipv4_address: 172.39.0.5
 
   bazarr:
     image: lscr.io/linuxserver/bazarr:latest
@@ -195,3 +204,6 @@ services:
       - /data:/data
     ports:
       - 6767:6767
+    networks:
+      servarrnetwork:
+        ipv4_address: 172.39.0.6
