@@ -26,11 +26,8 @@ services:
       - /dev/net/tun:/dev/net/tun
     volumes:
       - ./gluetun:/gluetun
-    environment:
-      - VPN_SERVICE_PROVIDER=private internet access
-      - OPENVPN_USER=${USER}
-      - OPENVPN_PASSWORD=${PASSWORD}
-      #- SERVER_REGIONS=${REGION}
+    env_file:
+      - ./.env
     # ports:
     #   - "6789:6789" # nzbget
 
