@@ -14,6 +14,7 @@ include:
   - jellyfin/docker-compose.yaml
   - servarr/docker-compose.yaml
   - ../gatitasbordando-pos/docker-compose.yaml
+  #- ../gestion-back/docker-compose.yml
   
 
 services:

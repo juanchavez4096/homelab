@@ -53,7 +53,7 @@ services:
   #       # - TZ=${TZ}
   #   volumes:
   #       - ./config:/config
-  #       - /data/downloads:/downloads
+  #       - /hdd/downloads:/downloads
   #   ports:
   #       - "8888:8888" # qbittorrent
   #   restart: always
@@ -87,7 +87,7 @@ services:
       #- TORRENTING_PORT=${FIREWALL_VPN_INPUT_PORTS} # airvpn forwarded port, pulled from .env
     volumes:
       - ./qbittorrent:/config
-      - /data:/data
+      - /hdd:/data
     depends_on:
       gluetun:
         condition: service_healthy
@@ -110,7 +110,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./nzbget:/config
-      - /data:/data
+      - /hdd:/data
     network_mode: "service:gluetun"
     depends_on:
       gluetun:
@@ -147,7 +147,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./sonarr:/config
-      - /data:/data
+      - /hdd:/data
     ports:
       - 8989:8989
     networks:
@@ -165,7 +165,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./radarr:/config
-      - /data:/data
+      - /hdd:/data
     ports:
       - 7878:7878
     networks:
@@ -179,7 +179,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./lidarr:/config
-      - /data:/data
+      - /hdd:/data
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
@@ -201,7 +201,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./bazarr:/config
-      - /data:/data
+      - /hdd:/data
     ports:
       - 6767:6767
     networks:
