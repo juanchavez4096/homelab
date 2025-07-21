@@ -15,6 +15,7 @@ include:
   - servarr/docker-compose.yaml
   - ../gatitasbordando-pos/docker-compose.yaml
   - ../gestion-costos-operativos/docker-compose.yaml
+  - ../gestion-back/docker-compose.yaml
   
 
 services:
