@@ -26,6 +26,7 @@ services:
     restart: always
     networks:
       - proxy-network
+      - cloudflare-network
     deploy:
       resources:
         limits:
