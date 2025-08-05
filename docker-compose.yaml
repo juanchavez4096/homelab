@@ -17,6 +17,7 @@ include:
   - ../gestion-costos-operativos/docker-compose.yaml
   - ../gestion-back/docker-compose.yaml
   - ollama/docker-compose.yaml
+  - cloudflare/docker-compose.yaml
   
 
 services:
