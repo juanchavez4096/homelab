@@ -1,0 +1,11 @@
+services:
+  cloudflared:
+    image: cloudflare/cloudflared:latest # Use the official cloudflared image
+    container_name: cloudflared
+    restart: unless-stopped # Ensures the container restarts if it stops
+    environment:
+      - TUNNEL_TOKEN=${TUNNEL_TOKEN} # Securely inject the tunnel token from a .env file
+      - TZ=America/Santiago # Optional: Set your timezone
+    command: tunnel --no-autoupdate run # Command to run the tunnel
+    networks:
+      - cloudflare-network # Connect to the same network as your application services
