@@ -5,7 +5,7 @@ include:
   - nginx_proxy_manager/docker-compose.yaml
   - tailscale/docker-compose.yaml
   - immich/docker-compose.yaml
-  - homeassistant/docker-compose.yaml
+  #- homeassistant/docker-compose.yaml
   - homarr/docker-compose.yaml
   - adguard/docker-compose.yaml
   - wordpress/docker-compose.yaml
